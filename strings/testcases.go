@@ -1,12 +1,19 @@
 package strings
 
-type palindromeTest struct {
+type stringCheckTest struct {
 	input    string
 	expected bool
 	name     string
 }
 
-var palindromeTests = []palindromeTest{
+type stringComparisonTest struct {
+	s1       string
+	s2       string
+	expected bool
+	name     string
+}
+
+var palindromeTests = []stringCheckTest{
 	{"", true, "Empty string"},
 	{"a", true, "Single character"},
 	{"aa", true, "Two same characters"},
@@ -19,4 +26,18 @@ var palindromeTests = []palindromeTest{
 	{"A man a plan a canal Panama", true, "Palindrome with spaces and mixed case"},
 	{"No 'x' in Nixon", true, "Palindrome with punctuation and mixed case"},
 	{"Hello, World!", false, "Non-palindrome with punctuation"},
+}
+
+var nonTrivialRotationTests = []stringComparisonTest{
+	{"a", "a", false, "Equal string"},
+	{"a", "b", false, "Different characters"},
+	{"abc", "bca", true, "Trivial rotation"},
+	{"abc", "cab", true, "Trivial rotation"},
+	{"abc", "abc", false, "Equal string"},
+	{"abc", "bca", true, "Trivial rotation"},
+	{"abc", "cab", true, "Trivial rotation"},
+	{"abc", "abc", false, "Equal string"},
+	{"abc", "bca", true, "Trivial rotation"},
+	{"abc", "cab", true, "Trivial rotation"},
+	{"abcde", "cdeab", true, "Trivial rotation"},
 }
