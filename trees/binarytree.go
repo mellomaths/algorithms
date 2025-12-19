@@ -4,13 +4,13 @@ type BinaryTree struct {
 	Root *TreeNode[int]
 }
 
-func TreeHeight(root *TreeNode[int]) (int, error) {
+func MaximumHeightOfTree(root *TreeNode[int]) (int, error) {
 	if root == nil {
 		return 0, ErrEmptyTree
 	}
 
-	leftHeight, _ := TreeHeight(root.Left)
-	rightHeight, _ := TreeHeight(root.Right)
+	leftHeight, _ := MaximumHeightOfTree(root.Left)
+	rightHeight, _ := MaximumHeightOfTree(root.Right)
 
 	return max(leftHeight, rightHeight) + 1, nil
 }

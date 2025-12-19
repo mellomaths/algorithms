@@ -272,7 +272,7 @@ var flipTreeClockwiseTests = []traversalTreeTest{
 	},
 }
 
-var treeHeightTests = []propertyTreeTest{
+var maximumHeightOfTreeTests = []propertyTreeTest{
 	{
 		&TreeNode[int]{
 			Value: 1,
