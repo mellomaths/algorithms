@@ -2,9 +2,6 @@ package strings
 
 import "strings"
 
-// IsNonTrivialRotation checks if s2 is a non-trivial rotation of s1.
-// A non-trivial rotation means that s2 is not equal to s1 and
-// can be obtained by rotating s1.
 func IsNonTrivialRotation(s1 string, s2 string) bool {
 	if s1 == s2 {
 		return false
@@ -27,4 +24,20 @@ func IsNonTrivialRotationIterative(s1 string, s2 string) bool {
 		}
 	}
 	return false
+}
+
+func RotateStringNTimes(s string, n int) string {
+	var sb strings.Builder
+	i := 0
+	for _, r := range s {
+		sb.WriteString(s[1:])
+		sb.WriteRune(r)
+		s = sb.String()
+		sb.Reset()
+		i += 1
+		if i == n {
+			break
+		}
+	}
+	return s
 }

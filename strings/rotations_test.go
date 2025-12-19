@@ -38,3 +38,13 @@ func TestCompareIsNonTrivialRotationAlgorithms(t *testing.T) {
 		}
 	}
 }
+
+func TestRotateStringNTimes(t *testing.T) {
+	for _, test := range rotateStringNTimesTests {
+		actual := RotateStringNTimes(test.s, test.times)
+		if actual != test.expected {
+			t.Errorf("test '%s' failed: s '%s' times '%d', expected '%s', got '%s'", test.name, test.s, test.times, test.expected, actual)
+		}
+	}
+
+}

@@ -13,6 +13,13 @@ type stringComparisonTest struct {
 	name     string
 }
 
+type rotateStringNTimesTest struct {
+	s        string
+	times    int
+	expected string
+	name     string
+}
+
 var palindromeTests = []stringCheckTest{
 	{"", true, "Empty string"},
 	{"a", true, "Single character"},
@@ -40,4 +47,9 @@ var nonTrivialRotationTests = []stringComparisonTest{
 	{"abc", "bca", true, "Trivial rotation"},
 	{"abc", "cab", true, "Trivial rotation"},
 	{"abcde", "cdeab", true, "Trivial rotation"},
+	{"abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz", "uvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrst", true, "Long string rotation"},
+}
+
+var rotateStringNTimesTests = []rotateStringNTimesTest{
+	{"abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz", 20, "uvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrst", "Long string rotation"},
 }
