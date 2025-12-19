@@ -1,6 +1,6 @@
 package trees
 
-type traversalTest struct {
+type traversalTreeTestAsserts struct {
 	key           int
 	expected      []int
 	expectedError error
@@ -8,8 +8,20 @@ type traversalTest struct {
 }
 
 type traversalTreeTest struct {
-	root *TreeNode[int]
-	t    traversalTest
+	root    *TreeNode[int]
+	asserts traversalTreeTestAsserts
+}
+
+type propertyTreeTestAsserts struct {
+	key           int
+	expected      int
+	expectedError error
+	name          string
+}
+
+type propertyTreeTest struct {
+	root    *TreeNode[int]
+	asserts propertyTreeTestAsserts
 }
 
 var dfsInOrderTests = []traversalTreeTest{
@@ -35,7 +47,7 @@ var dfsInOrderTests = []traversalTreeTest{
 				},
 			},
 		},
-		traversalTest{
+		traversalTreeTestAsserts{
 			key:           1,
 			expected:      []int{4, 2, 5, 1, 6, 3, 7},
 			expectedError: nil,
@@ -67,7 +79,7 @@ var dfsPreOrderTests = []traversalTreeTest{
 				},
 			},
 		},
-		traversalTest{
+		traversalTreeTestAsserts{
 			key:           1,
 			expected:      []int{1, 2, 4, 5, 3, 6, 7},
 			expectedError: nil,
@@ -99,7 +111,7 @@ var dfsPostOrderTests = []traversalTreeTest{
 				},
 			},
 		},
-		traversalTest{
+		traversalTreeTestAsserts{
 			key:           1,
 			expected:      []int{4, 5, 2, 6, 7, 3, 1},
 			expectedError: nil,
@@ -131,7 +143,7 @@ var bfsLevelOrderTests = []traversalTreeTest{
 				},
 			},
 		},
-		traversalTest{
+		traversalTreeTestAsserts{
 			key:           1,
 			expected:      []int{1, 2, 3, 4, 5, 6, 7},
 			expectedError: nil,
@@ -175,8 +187,8 @@ var bfsLevelOrderTests = []traversalTreeTest{
 				},
 			},
 		},
-		traversalTest{
-			key:           1,
+		traversalTreeTestAsserts{
+			key:           2,
 			expected:      []int{5, 12, 13, 7, 14, 2, 17, 23, 27, 3, 8, 11},
 			expectedError: nil,
 			name:          "BfsLevelOrder",
@@ -207,7 +219,7 @@ var flipTreeClockwiseTests = []traversalTreeTest{
 				},
 			},
 		},
-		traversalTest{
+		traversalTreeTestAsserts{
 			key:           1,
 			expected:      []int{4, 5, 2, 3, 1, 6, 7},
 			expectedError: nil,
@@ -251,11 +263,96 @@ var flipTreeClockwiseTests = []traversalTreeTest{
 				},
 			},
 		},
-		traversalTest{
-			key:           1,
+		traversalTreeTestAsserts{
+			key:           2,
 			expected:      []int{17, 23, 7, 12, 13, 5, 14, 2, 27, 3, 8, 11},
 			expectedError: nil,
 			name:          "BfsLevelOrder",
+		},
+	},
+}
+
+var treeHeightTests = []propertyTreeTest{
+	{
+		&TreeNode[int]{
+			Value: 1,
+			Left: &TreeNode[int]{
+				Value: 2,
+				Left: &TreeNode[int]{
+					Value: 4,
+				},
+				Right: &TreeNode[int]{
+					Value: 5,
+				},
+			},
+			Right: &TreeNode[int]{
+				Value: 3,
+				Left: &TreeNode[int]{
+					Value: 6,
+				},
+				Right: &TreeNode[int]{
+					Value: 7,
+				},
+			},
+		},
+		propertyTreeTestAsserts{
+			key:           1,
+			expected:      3,
+			expectedError: nil,
+			name:          "TreeHeight",
+		},
+	},
+	{
+		&TreeNode[int]{
+			Value: 5,
+			Left: &TreeNode[int]{
+				Value: 12,
+				Left: &TreeNode[int]{
+					Value: 7,
+					Left: &TreeNode[int]{
+						Value: 17,
+					},
+					Right: &TreeNode[int]{
+						Value: 23,
+					},
+				},
+			},
+			Right: &TreeNode[int]{
+				Value: 13,
+				Left: &TreeNode[int]{
+					Value: 14,
+					Left: &TreeNode[int]{
+						Value: 27,
+					},
+					Right: &TreeNode[int]{
+						Value: 3,
+					},
+				},
+				Right: &TreeNode[int]{
+					Value: 2,
+					Left: &TreeNode[int]{
+						Value: 8,
+					},
+					Right: &TreeNode[int]{
+						Value: 11,
+					},
+				},
+			},
+		},
+		propertyTreeTestAsserts{
+			key:           2,
+			expected:      4,
+			expectedError: nil,
+			name:          "TreeHeight",
+		},
+	},
+	{
+		nil,
+		propertyTreeTestAsserts{
+			key:           3,
+			expected:      0,
+			expectedError: ErrEmptyTree,
+			name:          "HeightOfEmptyTree",
 		},
 	},
 }
