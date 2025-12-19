@@ -1,4 +1,4 @@
-package tree
+package trees
 
 func BfsLevelOrderTraversal(root *TreeNode[int]) ([]int, error) {
 	queue := []*TreeNode[int]{}

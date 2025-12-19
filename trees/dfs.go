@@ -1,4 +1,4 @@
-package tree
+package trees
 
 func DfsInOrder(node *TreeNode[int], values *[]int) {
 	if node != nil {

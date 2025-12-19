@@ -1,4 +1,4 @@
-package tree
+package trees
 
 type TreeNode[T any] struct {
 	Value T
