@@ -183,3 +183,79 @@ var bfsLevelOrderTests = []traversalTreeTest{
 		},
 	},
 }
+
+var flipTreeClockwiseTests = []traversalTreeTest{
+	{
+		&TreeNode[int]{
+			Value: 1,
+			Left: &TreeNode[int]{
+				Value: 2,
+				Left: &TreeNode[int]{
+					Value: 4,
+				},
+				Right: &TreeNode[int]{
+					Value: 5,
+				},
+			},
+			Right: &TreeNode[int]{
+				Value: 3,
+				Left: &TreeNode[int]{
+					Value: 6,
+				},
+				Right: &TreeNode[int]{
+					Value: 7,
+				},
+			},
+		},
+		traversalTest{
+			key:           1,
+			expected:      []int{4, 5, 2, 3, 1, 6, 7},
+			expectedError: nil,
+			name:          "FlipTreeClockwise",
+		},
+	},
+	{
+		&TreeNode[int]{
+			Value: 5,
+			Left: &TreeNode[int]{
+				Value: 12,
+				Left: &TreeNode[int]{
+					Value: 7,
+					Left: &TreeNode[int]{
+						Value: 17,
+					},
+					Right: &TreeNode[int]{
+						Value: 23,
+					},
+				},
+			},
+			Right: &TreeNode[int]{
+				Value: 13,
+				Left: &TreeNode[int]{
+					Value: 14,
+					Left: &TreeNode[int]{
+						Value: 27,
+					},
+					Right: &TreeNode[int]{
+						Value: 3,
+					},
+				},
+				Right: &TreeNode[int]{
+					Value: 2,
+					Left: &TreeNode[int]{
+						Value: 8,
+					},
+					Right: &TreeNode[int]{
+						Value: 11,
+					},
+				},
+			},
+		},
+		traversalTest{
+			key:           1,
+			expected:      []int{17, 23, 7, 12, 13, 5, 14, 2, 27, 3, 8, 11},
+			expectedError: nil,
+			name:          "BfsLevelOrder",
+		},
+	},
+}
