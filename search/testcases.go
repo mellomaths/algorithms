@@ -28,3 +28,37 @@ var searchTests = []searchTest{
 	//Empty slice
 	{[]int{}, 2, -1, ErrNotFound, "Empty"},
 }
+
+var searchFirstOccurrenceTests = []searchTest{
+	//Sanity
+	{[]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 10, 9, nil, "Sanity"},
+	{[]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 9, 8, nil, "Sanity"},
+	{[]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 8, 7, nil, "Sanity"},
+	{[]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 7, 6, nil, "Sanity"},
+	{[]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 6, 5, nil, "Sanity"},
+	{[]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 5, 4, nil, "Sanity"},
+	{[]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 4, 3, nil, "Sanity"},
+	{[]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 3, 2, nil, "Sanity"},
+	{[]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 2, 1, nil, "Sanity"},
+	{[]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 1, 0, nil, "Sanity"},
+	//Absent
+	{[]int{1, 4, 5, 6, 7, 10}, -25, -1, ErrNotFound, "Absent"},
+	{[]int{1, 4, 5, 6, 7, 10}, 25, -1, ErrNotFound, "Absent"},
+	//Empty slice
+	{[]int{}, 2, -1, ErrNotFound, "Empty"},
+	//Multiple occurrences
+	{[]int{1, 2, 2, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 2, 1, nil, "Multiple occurrences"},
+	{[]int{1, 2, 2, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 2, 1, nil, "Multiple occurrences"},
+	{[]int{1, 2, 2, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 2, 1, nil, "Multiple occurrences"},
+	//Single occurrence
+	{[]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 1, 0, nil, "Single occurrence"},
+	{[]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 2, 1, nil, "Single occurrence"},
+	{[]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 3, 2, nil, "Single occurrence"},
+	{[]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 4, 3, nil, "Single occurrence"},
+	{[]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 5, 4, nil, "Single occurrence"},
+	{[]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 6, 5, nil, "Single occurrence"},
+	{[]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 7, 6, nil, "Single occurrence"},
+	{[]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 8, 7, nil, "Single occurrence"},
+	{[]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 9, 8, nil, "Single occurrence"},
+	{[]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 10, 9, nil, "Single occurrence"},
+}
